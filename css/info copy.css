@@ -1,0 +1,570 @@
+:root {
+  /* Definizione delle variabili CSS */
+  --bg-color: #1a1a2e;
+  --text-color: #e0e0e0;
+  --accent-color: #00ff9d;
+  --accent-glow: rgba(255, 255, 255, 0.2);
+  --primary-font: 'Outfit', sans-serif;
+  --border-radius: 12px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: rgba(31, 38, 135, 0.37);
+}
+
+/* Stili di base per tutti gli elementi */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Stili di base per il body */
+body {
+  font-family: var(--primary-font);
+  background: linear-gradient(135deg, var(--bg-color), #16213e) !important;
+  color: var(--text-color);
+  padding-top: 40px;
+  line-height: 1.6;
+}
+
+/* Contenitore principale */
+.container {
+  max-width: 1200px;
+  margin: 0 auto !important;
+  padding: 20px !important;
+}
+
+/* Stili per la tabella */
+.table {
+  margin-bottom: 1rem;
+  border: 1px solid #dee2e6;
+}
+
+.table th,
+.table td {
+  padding: 0.5rem;
+  border: 1px solid #dee2e6;
+  vertical-align: middle;
+}
+
+.table-success {
+  background-color: #d4edda !important;
+}
+
+.table-danger {
+  background-color: #f8d7da !important;
+}
+
+.table-primary {
+  background-color: #cfe2ff !important;
+}
+
+/* Stili per i badge */
+.badge {
+  font-size: 0.8rem;
+  padding: 0.4em 0.8em;
+}
+
+/* Stili per i popup personalizzati */
+.custom-swal-popup {
+  font-size: 0.9rem;
+}
+
+.fas {
+  margin-right: 0.3rem;
+}
+
+/* Stili tipografici */
+h1, h3, h4, h5, label, .text-base {
+  font-family: var(--primary-font);
+  color: var(--text-color) !important;
+  font-weight: 700;
+  text-shadow: 0 0 10px var(--accent-glow);
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+h3 {
+  font-size: 1.8rem;
+  margin: 30px 0;
+  text-align: center;
+}
+
+/* Layout a griglia */
+.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+/* Stili per gli elementi del form */
+.form-select,
+.form-control,
+select,
+.input-group-text {
+  font-weight: bold !important;
+  border: 2px solid var(--glass-border) !important;
+  border-radius: var(--border-radius) !important;
+  background-color: var(--glass-bg) !important;
+  color: var(--text-color) !important;
+  transition: all var(--transition) !important;
+  margin: 10px;
+}
+
+.form-select:focus,
+.form-control:focus {
+  border-color: var(--accent-glow) !important;
+  box-shadow: 0 0 15px var(--accent-glow) !important;
+}
+
+option {
+  background-color: #363636;
+}
+
+/* Stili per i bottoni */
+.btn,
+.btn-custom,
+.protected-button {
+  font-weight: bold !important;
+  text-transform: uppercase !important;
+  padding: 15px 25px;
+  font-size: 16px;
+  text-align: center;
+  border: none;
+  border-radius: 50px;
+  margin: 8px;
+  cursor: pointer;
+  transition: all var(--transition) !important;
+}
+
+.btn,
+.btn-custom {
+  box-shadow: 0 4px 5px var(--accent-glow) !important;
+}
+
+.btn:hover,
+.btn-custom:hover,
+.protected-button:hover {
+  transform: translateY(-3px) scale(1.02) !important;
+  box-shadow: 0 6px 20px var(--accent-glow) !important;
+}
+
+/* Gradiente per i bottoni */
+.btn-primary { background: linear-gradient(45deg, #2936eb, #4054b2) !important; }
+.btn-secondary { background: linear-gradient(45deg, #ebbe29, #dba506) !important; }
+.btn-success { background: linear-gradient(45deg, #28a745, #1e7e34) !important; }
+.btn-danger { background: linear-gradient(45deg, #dc3545, #bd2130) !important; }
+.btn-custom-1 { background: linear-gradient(45deg, #4682b4, #357abd) !important; }
+.btn-custom-2 { background: linear-gradient(45deg, #e0bf04, #ffd700) !important; }
+.btn-custom-3 { background: linear-gradient(45deg, #6a5acd, #483d8b) !important; }
+.btn-custom-4 { background: linear-gradient(45deg, #ff7f50, #ff5f2e) !important; }
+.btn-custom-5 { background: linear-gradient(45deg, #3cb371, #2e8b57) !important; }
+.btn-custom-6 { background: linear-gradient(45deg, #b33c7d, #9c2760) !important; }
+.btn-custom-7 { background: linear-gradient(45deg, #9a41e2, #7b1fa2) !important; }
+.btn-custom-8 { background: linear-gradient(45deg, #e25441, #ff3366) !important; }
+.btn-custom-9 {
+  display: block;
+  margin: 0 auto;
+  bottom: 20px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  background-color: #00702f;
+  background-image: repeating-linear-gradient(45deg, 
+      transparent, 
+      transparent 10px, 
+      rgba(255,255,255,.1) 10px, 
+      rgba(255,255,255,.1) 20px
+  );
+  color: white;
+  border: none;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  font-weight: bold;
+  width: 50%;
+}
+
+/* Effetti di vetro */
+
+.glass-effect,
+.alarm-container,
+.activity-group,
+.calendar,
+.protected-button,
+.alert {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--border-radius);
+}
+
+/* Gruppi di attività */
+.activity-group {
+  background: rgba(51, 69, 94, 0.8) !important;
+  padding: 15px !important;
+  margin-bottom: 20px !important;
+}
+
+.activity-group[data-type="cantiere"] select,
+.activity-group[data-type="cantiere"] input { background: rgba(224, 247, 250, 0.1) !important; }
+.activity-group[data-type="bnb"] select,
+.activity-group[data-type="bnb"] input { background: rgba(240, 244, 195, 0.1); }
+.activity-group[data-type="appartamenti"] select,
+.activity-group[data-type="appartamenti"] input { background: rgba(252, 228, 236, 0.1) !important; }
+.activity-group[data-type="pst"] input { background: rgba(232, 234, 246, 0.1) !important; }
+
+/* Stili per il calendario */
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  padding: 15px;
+}
+
+.day,
+.calendar-day {
+  border: 1px solid rgba(204, 204, 204, 0.2);
+  padding: 10px;
+  min-height: 100px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.current-day {
+  border: 5px solid rgba(255, 217, 0, 0.5);
+  background: rgba(49, 53, 58, 0.8);
+}
+
+/* Colori per i giorni della settimana */
+.day-domenica h5,
+.day-sabato h5 { 
+  color: #ff5f5f !important; 
+  text-shadow: 0 0 5px rgba(255, 95, 95, 0.5); 
+}
+
+.day-lunedì h5,
+.day-martedì h5,
+.day-mercoledì h5,
+.day-giovedì h5,
+.day-venerdì h5 { 
+  color: #e4ff99 !important; 
+  text-shadow: 0 0 5px rgba(228, 255, 153, 0.5); 
+}
+
+/* Sezioni speciali */
+.irene,
+.cerrano,
+.lorenza {
+  border-radius: 15px;
+  padding: 5px;
+  margin-bottom: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.irene { background: linear-gradient(45deg, #a74040, #8b3333) !important; }
+.cerrano { background: linear-gradient(45deg, #478792, #356f77) !important; }
+.lorenza { background: linear-gradient(45deg, #1e7844, #0a4d1e) !important; }
+
+/* Struttura base del popup */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 1000;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.modal-content {
+  background: #2d3436;
+  padding: 20px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+  color: #dfe6e9;
+}
+
+/* Titolo di successo */
+.success-title {
+  color: #2ecc71;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+}
+
+/* Sezione feedback */
+.feedback-section {
+  background: #34495e;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.feedback-title {
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.feedback-list {
+  list-style: none;
+  padding: 0;
+}
+
+.feedback-item {
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
+}
+
+.feedback-item span {
+  margin-left: 10px;
+}
+
+/* Card di attività */
+.activity-card {
+  background: #2c3e50;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  border: 2px solid #3498db;
+}
+
+.card-title {
+  color: #3498db;
+  text-align: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #3498db;
+}
+
+/* Sezione informativa */
+.info-section, 
+.bnb-details, 
+.biancheria-section {
+  background: #34495e;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* Tabelle */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #546e7a;
+}
+
+.biancheria-table th,
+.biancheria-table td {
+  text-align: center;
+}
+
+/* Pulsante di chiusura */
+.close-button {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  margin: 20px auto 0;
+  transition: background 0.3s;
+}
+
+.close-button:hover {
+  background: #2980b9;
+}
+
+/* Stili per il caricamento */
+.progress-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* Copre l'intera larghezza della finestra */
+  height: 100%; /* Copre l'intera altezza della finestra */
+  background: rgba(33, 37, 41, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1055; /* Assicurati che questo livello z sia superiore ad altri elementi della pagina */
+}
+
+.progress-container {
+  background: #34495e;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  width: 90%;
+  max-width: 400px;
+}
+
+.progress-text {
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #ffffff;
+  font-size: 1.1rem;
+}
+
+.progress-bar {
+  background: #ffffff;
+  height: 0.75rem;
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background: #00c90a;
+  height: 100%;
+  width: 0;
+  transition: width 0.4s ease-in-out;
+}
+
+/* Classi utilitarie */
+.testoNero { color: #000 !important; }
+
+.code {
+  color: var(--accent-color);
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+}
+
+.neon-text {
+  color: var(--accent-color);
+  text-shadow: 0 0 10px var(--accent-glow);
+}
+
+.logo-img {
+  transition: transform var(--transition);
+}
+
+.logo-img:hover {
+  transform: rotate(360deg);
+}
+
+.eye-icon {
+  cursor: pointer;
+  font-size: 1.2em;
+  margin-left: 10px;
+}
+
+.bnb iframe {
+  width: 100%;
+  height: 500px;
+  border: none;
+}
+
+.iframe-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 75%;
+}
+
+.iframe-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+@keyframes glow {
+  from { filter: drop-shadow(0 0 5px var(--accent-glow)); }
+  to { filter: drop-shadow(0 0 20px rgba(0, 255, 157, 0.8)); }
+}
+
+/* Riassunto attività */
+.activity-summary {
+  margin: 20px 0;
+}
+
+.activity-summary table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.activity-summary th,
+.activity-summary td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.activity-summary th {
+  background-color: #f5f5f5;
+}
+
+/* Stili per messaggi e alert */
+#message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  padding: 15px 25px;
+  border-radius: var(--border-radius);
+  font-weight: bold;
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .container { padding: 15px; }
+  h1 { font-size: 2rem; }
+  h3 { font-size: 1.5rem; }
+  .btn-custom {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+  }
+  .activity-group { padding: 10px; }
+  .form-select,
+  .form-control { font-size: 16px; }
+}
+
+@media screen and (max-width: 600px) {
+  .activity-summary table thead { display: none; }
+  
+  .activity-summary table tbody tr {
+    display: block;
+    border: 1px solid var(--glass-border);
+    margin-bottom: 1em;
+    background: rgba(255, 255, 255, 0.03);
+  }
+  
+  .activity-summary table tbody td {
+    display: block;
+    text-align: right;
+    position: relative;
+    padding: 8px;
+  }
+  
+  .activity-summary table tbody td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left;
+    color: var(--accent-color);
+  }
+}

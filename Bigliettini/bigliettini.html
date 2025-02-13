@@ -1,0 +1,90 @@
+<head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#495057">
+    <meta name="description" content="Info">
+    <meta name="author" content="Fabio Malvaldi">
+
+    <!-- Cache Control -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        integrity="sha384-..." crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css" rel="stylesheet">
+
+<!-- Version Control -->
+<script src="/version.js"></script>
+
+<!-- External Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://apis.google.com/js/api.js"></script>
+<script src="https://accounts.google.com/gsi/client"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- App Script with DOMContentLoaded -->
+<script>
+    document.write(`
+      <link rel="stylesheet" href="/css/info.css?v=${APP_VERSION}">
+      <script src="/WebApp/data.js?v=${APP_VERSION}"><\/script>
+      <script src="config.js?v=${APP_VERSION}"><\/script>
+      <script src="appartments.js?v=${APP_VERSION}"><\/script>
+      <script src="bnb.js?v=${APP_VERSION}"><\/script>
+      <script src="invio.js?v=${APP_VERSION}"><\/script>
+      <script src="popup.js?v=${APP_VERSION}"><\/script>
+    `);
+  </script>
+</head>
+
+<body>
+    <main class="container py-5">
+        <h1 class="mb-4 text-center">Registrazione Bigliettini</h1>
+        <form id="registrationForm" class="max-width-md mx-auto">
+            <div class="d-grid gap-3">
+                <!-- Navigation Button -->
+                <div class="text-center">
+                    <a href="/info.html" class="btn btn-custom-4 btn-lg text-white btn-custom ripple">
+                        <span class="btn-content">Torna indietro</span>
+                    </a>
+                </div>
+                <!-- Add Buttons Group -->
+                <div class="d-grid gap-2">
+                    <button type="button" class="btn btn-primary" id="addAppartamentiBtn">
+                        Aggiungi Appartamenti
+                    </button>
+                    <button type="button" class="btn btn-secondary" id="addBnBBtn">
+                        Aggiungi BnB
+                    </button>
+                </div>
+                <!-- View Buttons Group -->
+                <div class="d-grid gap-2">
+                    <a href="b_app.html" class="btn btn-custom-6 btn-custom text-white">
+                        Vedere Bigliettini Appartamenti
+                    </a>
+                    <a href="b_B&B.html" class="btn btn-custom-6 btn-custom text-white">
+                        Vedere Bigliettini B&B
+                    </a>
+                </div>
+                <div id="activitiesContainer"></div>
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-success" id="submitBtn">
+                    Registra
+                </button>
+            </div>
+        </form>
+        <div id="message" class="mt-4 alert" role="alert" style="display: none;"></div>
+    </main>
+</body>
+
+</html>

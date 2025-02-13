@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#495057">
+    <meta name="description" content="Info">
+    <meta name="author" content="Fabio Malvaldi">
+    
+    <!-- Cache Control -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
+          integrity="sha384-..." crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
+
+    <!-- Version Control -->
+    <script src="version.js"></script>
+    <script>
+        document.write(`
+            <link rel="stylesheet" href="/css/info.css?v=${APP_VERSION}">
+            <script src="WebApp/data.js?v=${APP_VERSION}"><\/script>
+        `);
+    </script>
+</head>
+
+<body class="bg-dark">
+    <div class="container py-4">
+        <main class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="alarm-container glass-effect p-4 rounded">
+                    <h3 class="text-center mb-4 neon-text">Credenziali Utenti</h3>
+                    <div class="alarm-list" id="credentialsList">
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="text-center mt-4">
+            <a href="areaRiservata.html" class="btn btn-custom-4 btn-lg text-white btn-custom ripple">
+                <span class="btn-content">Torna indietro</span>
+            </a>
+        </footer>
+    </div>
+    <script>
+        const credentialsList = document.getElementById('credentialsList');
+        employees.sort((a, b) => a.name.localeCompare(b.name));
+        employees.forEach(employee => {
+            const div = document.createElement('div');
+            div.className = 'alarm-item';
+            div.innerHTML = `${employee.name} = <span class="code">${employee.password}</span>`;
+            credentialsList.appendChild(div);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#495057">
+    <meta name="description" content="Info">
+    <meta name="author" content="Fabio Malvaldi">
+    
+    <!-- Cache Control -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
+          integrity="sha384-..." crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
+
+    <!-- Version Control -->
+    <script src="version.js"></script>
+    <script>
+        document.write(`
+            <link rel="stylesheet" href="/css/info.css?v=${APP_VERSION}">
+            <script src="WebApp/data.js?v=${APP_VERSION}"><\/script>
+
+        `);
+    </script>
+</head>
+<title>Info Generali</title>
+
+<body>
+    <div class="container">
+        <header class="text-center mt-4 mb-4 animate__animated animate__fadeIn">
+            <h1 class="d-inline-block ms-3 align-middle">Info Generali</h1>
+        </header>
+        <main class="row justify-content-center">
+            <div class="col-md-8">
+                <nav class="d-grid gap-3 button-container">
+                    <a href="/calendario.html" class="btn btn-custom-2 btn-lg text-white btn-custom ripple">Appartamenti
+                        e B&B</a>
+                     <!--<a href="/Calendario/index.html"
+                        class="btn btn-lg btn-custom-8 text-white btn-custom ripple">Calendario</a>-->
+                    <a href="composizioneLetti.html"
+                        class="btn btn-custom-3 btn-lg text-white btn-custom ripple">COMPOSIZIONE LETTI</a>
+                    <a href="pulizia.html" class="btn btn-custom-3 btn-lg text-white btn-custom ripple">GUIDA - COME
+                        PULIRE</a>
+                    <a href="allarmi.html" class="btn btn-custom-3 btn-lg text-white btn-custom ripple">CODICI
+                        ALLARMI</a>
+                    <a href="appartamenti.html"
+                        class="btn btn-custom-5 btn-lg text-white btn-custom ripple">COMPOSIZIONE APPARTAMENTI</a>
+                    <a href="Bigliettini/bigliettini.html"
+                        class="btn btn-custom-6 btn-lg text-white btn-custom ripple">BIGLIETTINI</a>
+                    <a href="ore/webApp_Ore.html" class="btn btn-custom-6 btn-lg text-white btn-custom ripple">ORE</a>
+                    <a href="/WebApp/oredipendenti.html"
+                        class="btn btn-custom-6 btn-lg text-white btn-custom ripple">ORE DIPENDENTI</a>
+                    <a id="pswAr" href="areaRiservata.html" class="btn btn-custom-4 btn-lg text-white btn-custom ripple">Area Riservata</a>
+                    <div class="text-center">
+                    </div>
+                </nav>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <script>
+
+document.getElementById('pswAr').addEventListener('click', function(event) {
+    event.preventDefault();
+    
+    Swal.fire({
+        title: 'Area Riservata',
+        input: 'password',
+        inputPlaceholder: 'Inserisci la password',
+        showCancelButton: true,
+        confirmButtonText: 'Accedi',
+        cancelButtonText: 'Annulla',
+        customClass: {
+            popup: 'glass-effect',
+            title: 'neon-text',
+            confirmButton: 'btn btn-custom-4 btn-lg text-white btn-custom ripple',
+            cancelButton: 'btn btn-custom-3 btn-lg text-white btn-custom ripple',
+            container: 'container'
+        },
+        background: 'var(--bg-color)',
+        color: 'var(--text-color)',
+        buttonsStyling: false,
+        backdrop: `
+            rgba(26, 26, 46, 0.8)
+            left top
+            no-repeat
+        `
+    }).then((result) => {
+        let password = result.value;
+        
+        if (password === null || password === '') {
+            Swal.fire({
+                icon: 'error',
+                title: 'Password errata!',
+                customClass: {
+                    popup: 'glass-effect',
+                    confirmButton: 'btn btn-custom-3 btn-lg text-white btn-custom ripple'
+                },
+                buttonsStyling: false,
+                background: 'var(--bg-color)',
+                color: 'var(--text-color)'
+            });
+            return;
+        }
+        
+        if (masterPassword.includes(password)) {
+            window.location.href = 'areaRiservata.html';
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Password errata!',
+                customClass: {
+                    popup: 'glass-effect',
+                    confirmButton: 'btn btn-custom-3 btn-lg text-white btn-custom ripple'
+                },
+                buttonsStyling: false,
+                background: 'var(--bg-color)',
+                color: 'var(--text-color)'
+            });
+        }
+    });
+});
+
+
+    </script>
+
+
+
+
+</body>
+
+</html>

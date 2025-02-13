@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#495057">
+    <meta name="description" content="Info">
+    <meta name="author" content="Fabio Malvaldi">
+    
+    <!-- Cache Control -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
+          integrity="sha384-..." crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
+
+    <!-- Version Control -->
+    <script src="version.js"></script>
+    <script>
+        document.write(`
+            <link rel="stylesheet" href="/css/info.css?v=${APP_VERSION}">
+        `);
+    </script>
+</head>
+
+<body>
+    <div class="container py-5">
+        <!-- Header Section -->
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <a href="areaRiservata.html" class="btn btn-custom-4 btn-lg text-white glow-effect">
+                    <i class="fas fa-arrow-left me-2"></i>Torna indietro
+                </a>
+            </div>
+        </div>
+        <h1 class="neon-text text-center mb-5">
+            <i class="fas fa-calculator me-3"></i>
+            Calcolatore Prezzo Finale
+        </h1>
+        <!-- Main Calculator Section -->
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="glass-effect p-5 mb-4">
+                    <h2 class="text-center mb-4 neon-text">
+                        <i class="fas fa-home me-2"></i>
+                        Preventivo Appartamenti
+                    </h2>
+                    <form id="calculatorForm" class="activity-group" data-type="appartamenti">
+                        <div class="row g-4">
+                            <!-- Input Fields -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label neon-text">
+                                        <i class="fas fa-bed me-2"></i>
+                                        Letti Matrimoniali
+                                    </label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control glass-effect" id="lettiMatrimoniali"
+                                            min="0" step="1" placeholder="Numero letti matrimoniali">
+                                        <button type="button" class="btn btn-outline-secondary" data-bs-toggle="tooltip"
+                                            data-bs-placement="top"
+                                            title="Include 3 set di lenzuola per ogni letto matrimoniale">
+                                            <i class="fas fa-info-circle"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label neon-text">
+                                        <i class="fas fa-bed me-2"></i>
+                                        Letti Singoli
+                                    </label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control glass-effect" id="lettiSingoli" min="0"
+                                            step="1" placeholder="Numero letti singoli">
+                                        <button type="button" class="btn btn-outline-secondary" data-bs-toggle="tooltip"
+                                            data-bs-placement="top"
+                                            title="Include 3 set di lenzuola per ogni letto singolo">
+                                            <i class="fas fa-info-circle"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label neon-text">
+                                        <i class="fas fa-utensils me-2"></i>
+                                        Cucine
+                                    </label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control glass-effect" id="cucina" min="0"
+                                            step="1" placeholder="Numero cucine">
+                                        <button type="button" class="btn btn-outline-secondary" data-bs-toggle="tooltip"
+                                            data-bs-placement="top" title="Include canovacci e kit cucina">
+                                            <i class="fas fa-info-circle"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label neon-text">
+                                        <i class="fas fa-bath me-2"></i>
+                                        Bagni
+                                    </label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control glass-effect" id="bagno" min="0"
+                                            step="1" placeholder="Numero bagni">
+                                        <button type="button" class="btn btn-outline-secondary" data-bs-toggle="tooltip"
+                                            data-bs-placement="top" title="Include asciugamani, tappetini e accessori">
+                                            <i class="fas fa-info-circle"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label neon-text">
+                                        <i class="fas fa-clock me-2"></i>
+                                        Ore Necessarie
+                                    </label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control glass-effect" id="ore" min="0"
+                                            step="0.5" placeholder="Numero ore necessarie">
+                                        <button type="button" class="btn btn-outline-secondary" data-bs-toggle="tooltip"
+                                            data-bs-placement="top" title="Inserire le ore stimate per il servizio">
+                                            <i class="fas fa-info-circle"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Results Section -->
+                <div class="glass-effect p-4">
+                    <h3 class="text-center mb-4 neon-text">
+                        <i class="fas fa-chart-line me-2"></i>
+                        Risultato
+                    </h3>
+                    <div class="result">
+                        <!-- Prezzo Finale - Always Visible -->
+                        <div class="result-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-euro-sign me-2 neon-text"></i>
+                                    <p class="mb-0 fs-4">Prezzo Finale</p>
+                                </div>
+                                <span id="total_price" class="fw-bold neon-text fs-3">€ 0.00</span>
+                            </div>
+                        </div>
+                        <!-- Hidden Results -->
+                        <div id="hiddenResults" class="detail-section">
+                            <!-- Costo Biancheria -->
+                            <div class="result-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-bed me-2 neon-text"></i>
+                                        <p class="mb-0">Costo Biancheria</p>
+                                    </div>
+                                    <span id="biancheriaTOT" class="hidden-value">****</span>
+                                </div>
+                            </div>
+                            <!-- Costo Personale -->
+                            <div class="result-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-users me-2 neon-text"></i>
+                                        <p class="mb-0">Costo Personale</p>
+                                    </div>
+                                    <span id="przPersonale" class="hidden-value">****</span>
+                                </div>
+                            </div>
+                            <!-- Margine -->
+                            <div class="result-item">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-chart-pie me-2 neon-text"></i>
+                                        <p class="mb-0">Margine</p>
+                                    </div>
+                                    <span id="margine" class="hidden-value">****</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Toggle Visibility Button -->
+                        <div class="text-center mt-4">
+                            <button id="toggleVisibility" class="btn btn-outline-light glow-effect">
+                                <i class="fas fa-eye me-2"></i>
+                                Mostra Dettagli
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Costanti e Configurazione
+        const prezzi = {
+            canovaccio: 0.45,
+            matrimonialeMillerighe: 1.18,
+            singoloMillerighe: 0.97,
+            federeMillerighe: 0.47,
+            kitCucina: 0.60,
+            scendibagno: 0.63,
+            viso: 0.42,
+            bidet: 0.32,
+            corpo: 0.95,
+            cartaigienica: 0.16,
+            kitCortesia: 0.36,
+            minuti: 30.00
+        };
+        // Stato dell'applicazione
+        let state = {
+            isDetailsVisible: false,
+            currentResults: {
+                totalPrice: 0,
+                biancheriaTOT: 0,
+                przPersonale: 0,
+                margine: 0
+            },
+            validationErrors: []
+        };
+        // Funzioni di Utilità
+        function roundUpToMultipleOf5(num) {
+            return Math.ceil(num / 5) * 5;
+        }
+
+        function formatCurrency(amount) {
+            return '€ ' + amount.toFixed(2);
+        }
+
+        function validateInputs() {
+            state.validationErrors = [];
+            const inputs = {
+                lettiMatrimoniali: document.getElementById('lettiMatrimoniali').value,
+                lettiSingoli: document.getElementById('lettiSingoli').value,
+                cucina: document.getElementById('cucina').value,
+                bagno: document.getElementById('bagno').value,
+                ore: document.getElementById('ore').value
+            };
+
+            for (const [key, value] of Object.entries(inputs)) {
+                if (value && (value < 0 || !Number.isInteger(parseFloat(value)))) {
+                    if (key !== 'ore') { // ore può avere decimali
+                        state.validationErrors.push(`Il campo ${key} deve essere un numero intero positivo`);
+                    }
+                }
+            }
+
+            if (inputs.ore && (parseFloat(inputs.ore) < 0 || parseFloat(inputs.ore) % 0.5 !== 0)) {
+                state.validationErrors.push('Le ore devono essere specificate in incrementi di 0.5');
+            }
+
+            return state.validationErrors.length === 0;
+        }
+
+        function showError(message) {
+            // Utilizza SweetAlert2 per mostrare gli errori
+            Swal.fire({
+                title: 'Errore',
+                text: message,
+                icon: 'error',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#00ff88'
+            });
+        }
+
+
+        // Funzioni di Calcolo
+        function calcolaBiancheriaTOT(lettiMatrimoniali, lettiSingoli, cucina, bagno) {
+            const costoLenzolaMatrimoniali = lettiMatrimoniali * 3 * prezzi.matrimonialeMillerighe;
+            const costoLenzolaSingoli = lettiSingoli * 3 * prezzi.singoloMillerighe;
+            const costoFedere = (lettiMatrimoniali * 2 + lettiSingoli) * prezzi.federeMillerighe;
+            const costoAsciugamani = (lettiMatrimoniali * 2 + lettiSingoli) *
+                (prezzi.viso + prezzi.bidet + prezzi.corpo);
+            const costoKitCortesia = (lettiMatrimoniali * 2 + lettiSingoli) * prezzi.kitCortesia;
+            const costoCucina = cucina * (prezzi.canovaccio + prezzi.kitCucina);
+            const costoBagno = bagno * (prezzi.scendibagno + prezzi.cartaigienica);
+
+            return costoLenzolaMatrimoniali +
+                costoLenzolaSingoli +
+                costoFedere +
+                costoAsciugamani +
+                costoKitCortesia +
+                costoCucina +
+                costoBagno;
+        }
+
+        function calculatePrice() {
+            if (!validateInputs()) {
+                showError(state.validationErrors.join('\n'));
+                return;
+            }
+
+            const inputs = {
+                lettiMatrimoniali: parseFloat(document.getElementById('lettiMatrimoniali').value) || 0,
+                lettiSingoli: parseFloat(document.getElementById('lettiSingoli').value) || 0,
+                cucina: parseFloat(document.getElementById('cucina').value) || 0,
+                bagno: parseFloat(document.getElementById('bagno').value) || 0,
+                ore: parseFloat(document.getElementById('ore').value) || 0
+            };
+
+            // Calcola i costi
+            const biancheriaTOT = calcolaBiancheriaTOT(
+                inputs.lettiMatrimoniali,
+                inputs.lettiSingoli,
+                inputs.cucina,
+                inputs.bagno
+            );
+            const przPersonale = inputs.ore * prezzi.minuti;
+            const totalPrice = roundUpToMultipleOf5(1.4 * (biancheriaTOT + przPersonale));
+            const margine = totalPrice - biancheriaTOT - przPersonale;
+
+            // Aggiorna lo stato
+            state.currentResults = {
+                totalPrice,
+                biancheriaTOT,
+                przPersonale,
+                margine
+            };
+
+            // Aggiorna l'interfaccia
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            // Aggiorna sempre il prezzo totale
+            document.getElementById('total_price').textContent =
+                formatCurrency(state.currentResults.totalPrice);
+
+            // Aggiorna gli altri valori in base alla visibilità
+            const hiddenValue = '****';
+            document.getElementById('biancheriaTOT').textContent = state.isDetailsVisible ?
+                formatCurrency(state.currentResults.biancheriaTOT) : hiddenValue;
+            document.getElementById('przPersonale').textContent = state.isDetailsVisible ?
+                formatCurrency(state.currentResults.przPersonale) : hiddenValue;
+            document.getElementById('margine').textContent = state.isDetailsVisible ?
+                formatCurrency(state.currentResults.margine) : hiddenValue;
+
+            // Aggiorna il pulsante di toggle
+            const toggleButton = document.getElementById('toggleVisibility');
+            toggleButton.innerHTML = state.isDetailsVisible ?
+                '<i class="fas fa-eye-slash me-2"></i>Nascondi Dettagli' :
+                '<i class="fas fa-eye me-2"></i>Mostra Dettagli';
+        }
+
+        function toggleVisibility() {
+            state.isDetailsVisible = !state.isDetailsVisible;
+            updateDisplay();
+        }
+
+
+        // Add input event listeners to all numeric inputs
+        document.addEventListener('DOMContentLoaded', function () {
+            const numericInputs = document.querySelectorAll('input[type="number"]');
+            numericInputs.forEach(input => {
+                input.addEventListener('input', function () {
+                    this.value = this.value.replace(/^-/, '');
+                    if (this.id !== 'ore') {
+                        this.value = Math.floor(parseFloat(this.value) || 0);
+                    }
+                    calculatePrice(); // Call calculatePrice on every input change
+                });
+            });
+
+            // Initialize tooltips
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+
+            // Event listener for visibility toggle
+            document.getElementById('toggleVisibility').addEventListener('click', toggleVisibility);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#495057">
+    <meta name="description" content="Info">
+    <meta name="author" content="Fabio Malvaldi">
+
+    <!-- Cache Control -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        integrity="sha384-..." crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bootstrap-4/bootstrap-4.css" rel="stylesheet">
+
+    <!-- Version Control -->
+    <script src="/version.js"></script>
+    <script>
+        document.write(`
+            <link rel="stylesheet" href="/css/info.css?v=${APP_VERSION}">
+            <script src="/WebApp/data.js?v=${APP_VERSION}"><\/script>
+            <script src="app_ore.js?v=${APP_VERSION}"><\/script>
+            <script src="sheets.js?v=${APP_VERSION}"><\/script>
+        `);
+    </script>
+
+    <!-- External Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="https://accounts.google.com/gsi/client"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-12 col-md-8">
+                <h1>Registrazione Ore</h1>
+            </div>
+            <div class="text-center mt-4">
+                <a href="/info.html" class="btn btn-custom-4 btn-lg text-white btn-custom ripple">
+                    <span class="btn-content">Torna indietro</span>
+                </a>
+            </div>
+
+            <div class="text-end mb-3">
+                <button onclick="logout()" class="btn btn-secondary">Logout</button>
+            </div>
+
+
+            <form id="registrationForm">
+                <div class="form-group">
+                    <select id="username" name="username" class="form-select" required>
+                        <option value="" hidden selected>Dipendente</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="date" id="date" name="date" class="form-control" required>
+                </div>
+
+                <div id="activitiesContainer" class="mb-3"></div>
+
+                <div id="activityButtons" class="row mb-3"></div>
+
+                <div class="mb-4">
+                    <div class="form-check form-switch d-flex align-items-center">
+                        <input class="form-check-input" type="checkbox" id="festaCheckbox"
+                            style="transform: scale(1.5); margin-right: 15px;">
+                        <label class="form-check-label fs-5 fw-bold mb-0" for="festaCheckbox"
+                            style="color: #6c757d;">Riposo</label>
+                    </div>
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-success w-100" id="submitBtn">Registra</button>
+                </div>
+            </form>
+
+            <div id="message" class="mt-3 alert" role="alert" style="display: none;"></div>
+        </div>
+
+
+
+
+</body>
+
+</html>

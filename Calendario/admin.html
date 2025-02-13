@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <!-- Meta Tags -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="theme-color" content="#495057">
+        <meta name="description" content="Info">
+        <meta name="author" content="Fabio Malvaldi">
+        
+        <!-- Cache Control -->
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Expires" content="0">
+      
+                  
+        <!-- Preconnect -->
+        <link rel="preconnect" href="https://cdn.jsdelivr.net">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      
+        <!-- External CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
+              integrity="sha384-..." crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
+      
+        <!-- Version Control -->
+        <script src="/version.js"></script>
+        <script>
+            document.write(`
+                <link rel="stylesheet" href="/css/info.css?v=${APP_VERSION}">
+            `);
+        </script>
+      </head>
+      
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Admin Calendario</h1>
+
+        <a href="/areaRiservata
+.html" class="btn btn-custom-4 btn-lg text-white btn-custom">Torna indietro</a>
+
+        <div class="row mb-3">
+            <div class="col">
+                <select style="background-color:#495057" id="monthSelect" class="form-select"></select>
+            </div>
+            <div class="col">
+                <select style="background-color:#495057" id="yearSelect" class="form-select"></select>
+            </div>
+        </div>
+
+        <div class="container-fluid mb-4">
+            <div class="row g-3 align-items-center bg-light border rounded p-3">
+                <div class="col-12 col-md-3">
+                    <input type="text" id="copyText" class="form-control border-primary" placeholder="Testo da copiare">
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="input-group">
+                        <span class="input-group-text">Da:</span>
+                        <input type="date" id="startDate" class="form-control border-primary" style="color: #007bff;">
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="input-group">
+                        <span class="input-group-text">A:</span>
+                        <input type="date" id="endDate" class="form-control border-primary" style="color: #007bff;">
+                    </div>
+                </div>
+                <div class="col-12 col-md-3">
+                    <button class="btn btn-primary w-100" onclick="copyToDateRange()">Copia</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container-fluid">
+            <div class="row g-3 align-items-center bg-light border rounded p-3">
+                <div class="col-12 col-md-3">
+                    <input type="text" id="deleteText" class="form-control border-danger" placeholder="Testo da cancellare">
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="input-group">
+                        <span class="input-group-text">Da:</span>
+                        <input type="date" id="deleteStartDate" class="form-control border-danger" style="color: #dc3545;">
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="input-group">
+                        <span class="input-group-text">A:</span>
+                        <input type="date" id="deleteEndDate" class="form-control border-danger" style="color: #dc3545;">
+                    </div>
+                </div>
+                <div class="col-12 col-md-3">
+                    <button class="btn btn-danger w-100" onclick="deleteFromDateRange()">Cancella</button>
+                </div>
+            </div>
+        </div>
+        <div id="calendar" class="row"></div>
+
+        <div class="row mb-3">
+            <button class="btn btn-primary mt-3" onclick="saveAllDays()">Salva Tutto</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-database-compat.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyBw0GeVoA4bld-yd3RRVheuLIjycF1k42c",
+            authDomain: "stopcantieri.firebaseapp.com",
+            databaseURL: "https://stopcantieri-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "stopcantieri",
+            storageBucket: "stopcantieri.appspot.com",
+            messagingSenderId: "731519020153",
+            appId: "1:731519020153:web:b3b7b28d5ca764e787b8a8",
+            measurementId: "G-KDW6EFKHKL"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const database = firebase.database();
+
+        const connectedRef = database.ref(".info/connected");
+        connectedRef.on("value", (snap) => {
+            if (snap.val() === true) {
+                console.log("connected");
+            } else {
+                console.log("not connected");
+            }
+        });
+
+        const months = ['Gennaio', 'Febbraio', 'Marzo', 'Aprile', 'Maggio', 'Giugno', 'Luglio', 'Agosto', 'Settembre', 'Ottobre', 'Novembre', 'Dicembre'];
+        const weekdays = ['Domenica', 'Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato'];
+        const currentDate = new Date();
+        let currentMonth = currentDate.getMonth();
+        let currentYear = currentDate.getFullYear();
+
+        function populateSelects() {
+            const monthSelect = document.getElementById('monthSelect');
+            const yearSelect = document.getElementById('yearSelect');
+
+            months.forEach((month, index) => {
+                const option = new Option(month, index);
+                monthSelect.add(option);
+            });
+            monthSelect.value = currentMonth;
+
+            for (let year = currentYear - 5; year <= currentYear + 5; year++) {
+                const option = new Option(year, year);
+                yearSelect.add(option);
+            }
+            yearSelect.value = currentYear;
+
+            monthSelect.addEventListener('change', updateCalendar);
+            yearSelect.addEventListener('change', updateCalendar);
+        }
+
+        function updateCalendar() {
+            currentMonth = parseInt(document.getElementById('monthSelect').value);
+            currentYear = parseInt(document.getElementById('yearSelect').value);
+            loadCalendar();
+        }
+
+        function loadCalendar() {
+            const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+            const today = new Date();
+
+            database.ref('calendar').once('value').then((snapshot) => {
+                const calendarData = snapshot.val() || {};
+                const calendar = document.getElementById('calendar');
+                calendar.innerHTML = '';
+
+                for (let i = 1; i <= daysInMonth; i++) {
+                    const dayDate = new Date(currentYear, currentMonth, i);
+                    const weekday = weekdays[dayDate.getDay()];
+                    const day = document.createElement('div');
+                    day.className = 'col-md-4 calendar-day';
+                    
+                    if (dayDate.getDate() === today.getDate() &&
+                        dayDate.getMonth() === today.getMonth() &&
+                        dayDate.getFullYear() === today.getFullYear()) {
+                        day.classList.add('current-day');
+                    }
+                    
+                    const content = calendarData[`${currentYear}-${currentMonth+1}-${i}`] || '';
+                    day.innerHTML = `
+                        <h5>${weekday}, ${i} ${months[currentMonth]} ${currentYear}</h5>
+                        <textarea style="background-color:#495057" class="form-control calendar-textarea" id="day${i}" rows="3">${content.replace(/\n/g, '&#10;')}</textarea>
+                    `;
+                    calendar.appendChild(day);
+                }
+            });
+        }
+
+        function saveAllDays() {
+            const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+            const updates = {};
+
+            for (let i = 1; i <= daysInMonth; i++) {
+                const content = document.getElementById(`day${i}`).value;
+                const dateKey = `${currentYear}-${currentMonth+1}-${i}`;
+                updates[dateKey] = content;
+            }
+
+            database.ref('calendar').update(updates)
+                .then(() => {
+                    alert(`Tutti i giorni di ${months[currentMonth]} ${currentYear} sono stati salvati con successo!`);
+                })
+                .catch((error) => {
+                    console.error("Errore durante il salvataggio:", error);
+                    alert("Si è verificato un errore durante il salvataggio.");
+                });
+        }
+
+        function copyToDateRange() {
+            const text = document.getElementById('copyText').value;
+            const startDate = new Date(document.getElementById('startDate').value);
+            const endDate = new Date(document.getElementById('endDate').value);
+
+            if (!text || isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
+                alert("Inserisci un testo valido e date di inizio e fine valide.");
+                return;
+            }
+
+            if (startDate > endDate) {
+                alert("La data di inizio deve essere precedente o uguale alla data di fine.");
+                return;
+            }
+
+            database.ref('calendar').once('value').then((snapshot) => {
+                const calendarData = snapshot.val() || {};
+                const updates = {};
+
+                for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
+                    const year = d.getFullYear();
+                    const month = d.getMonth() + 1;
+                    const day = d.getDate();
+                    const dateKey = `${year}-${month}-${day}`;
+                    
+                    let currentContent = calendarData[dateKey] || '';
+                    if (currentContent) {
+                        currentContent += '\n'; // Aggiungi una nuova riga se c'è già del contenuto
+                    }
+                    updates[dateKey] = currentContent + text;
+
+                    if (year === currentYear && month === currentMonth + 1) {
+                        const textarea = document.getElementById(`day${day}`);
+                        if (textarea) {
+                            textarea.value = updates[dateKey];
+                        }
+                    }
+                }
+
+                database.ref('calendar').update(updates)
+                    .then(() => {
+                        alert("Il testo è stato aggiunto con successo nell'intervallo di date specificato.");
+                        loadCalendar(); // Ricarica il calendario per mostrare eventuali aggiornamenti
+                    })
+                    .catch((error) => {
+                        console.error("Errore durante il salvataggio:", error);
+                        alert("Si è verificato un errore durante il salvataggio.");
+                    });
+            });
+        }
+
+
+        function deleteFromDateRange() {
+    const textToDelete = document.getElementById('deleteText').value;
+    const startDate = new Date(document.getElementById('deleteStartDate').value);
+    const endDate = new Date(document.getElementById('deleteEndDate').value);
+
+    if (!textToDelete || isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
+        alert("Inserisci un testo valido e date di inizio e fine valide.");
+        return;
+    }
+
+    if (startDate > endDate) {
+        alert("La data di inizio deve essere precedente o uguale alla data di fine.");
+        return;
+    }
+
+    database.ref('calendar').once('value').then((snapshot) => {
+        const calendarData = snapshot.val() || {};
+        const updates = {};
+
+        for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
+            const year = d.getFullYear();
+            const month = d.getMonth() + 1;
+            const day = d.getDate();
+            const dateKey = `${year}-${month}-${day}`;
+            
+            let currentContent = calendarData[dateKey] || '';
+            if (currentContent.includes(textToDelete)) {
+                updates[dateKey] = currentContent.replace(new RegExp(textToDelete, 'g'), '').trim();
+
+                if (year === currentYear && month === currentMonth + 1) {
+                    const textarea = document.getElementById(`day${day}`);
+                    if (textarea) {
+                        textarea.value = updates[dateKey];
+                    }
+                }
+            }
+        }
+
+        database.ref('calendar').update(updates)
+            .then(() => {
+                alert("Il testo specificato è stato cancellato con successo nell'intervallo di date specificato.");
+                loadCalendar(); // Ricarica il calendario per mostrare gli aggiornamenti
+            })
+            .catch((error) => {
+                console.error("Errore durante la cancellazione:", error);
+                alert("Si è verificato un errore durante la cancellazione.");
+            });
+    });
+}
+
+
+        populateSelects();
+        loadCalendar();
+    </script>
+</body>
+</html>

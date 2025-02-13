@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#495057">
+    <meta name="description" content="Info">
+    <meta name="author" content="Fabio Malvaldi">
+    
+    <!-- Cache Control -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" 
+          integrity="sha384-..." crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
+
+    <!-- Version Control -->
+    <script src="version.js"></script>
+    <script>
+        document.write(`
+            <link rel="stylesheet" href="/css/info.css?v=${APP_VERSION}">
+        `);
+    </script>
+</head>
+
+<body class="bg-dark">
+    <div class="container py-4">
+        <header class="text-center mb-5 animate__animated animate__fadeIn">
+            <div class="d-flex align-items-center justify-content-center">
+                <h1 class="gradient-text">Pulizie</h1>
+            </div>
+        </header>
+        <nav class="text-center mb-4">
+            <a href="/info.html" class="btn btn-custom-4 btn-lg text-white btn-custom ripple">
+                <span class="btn-content">Torna indietro</span>
+            </a>
+        </nav>
+        <main class="row justify-content-center">
+            <!-- Pulizia Uffici -->
+            <div class="col-md-6">
+                <div class="alarm-container glass-effect p-4 rounded mb-4">
+                    <h3 class="text-center mb-4 neon-text">Pulizia Uffici</h3>
+                    <div class="alarm-list">
+                        <div class="alarm-item">Svuotamento cestini ed eventuale cambio sacchi se sporchi</div>
+                        <div class="alarm-item">Spolvero scrivanie e schermi pc</div>
+                        <div class="alarm-item">Pulizia e svuotamento macchina del caffè</div>
+
+                        <div class="alarm-group mt-4">
+                            <h4 class="mb-3">Pulizia dei bagni:</h4>
+                            <div class="alarm-subitem">Disinfezione, pulizia e asciugatura superfici</div>
+                            <div class="alarm-subitem">Svuotamento cestini</div>
+                            <div class="alarm-subitem">Controllo carta igienica</div>
+                            <div class="alarm-subitem">Mettere salviette se richieste</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Pulizia B&B -->
+            <div class="col-md-6">
+                <div class="alarm-container glass-effect p-4 rounded mb-4">
+                    <h3 class="text-center mb-4 neon-text">Pulizia B&B</h3>
+                    <div class="alarm-group">
+                        <h4 class="mb-3">Check-out:</h4>
+                        <ul>
+                            <li>Sfare letti</li>
+                            <li>Rifare letti</li>
+                            <li>Conteggio biancheria</li>
+                            <li>
+                                Pulire bagni:
+                                <ul>
+                                    <li>Disinfezione, pulizia e asciugatura superfici</li>
+                                    <li>Svuotamento cestini ed eventuale cambio sacchi se sporchi</li>
+                                    <li>Pulire doccia</li>
+                                    <li>
+                                        Rifornire:
+                                        <ul>
+                                            <li>2 rotoli di carta igienica</li>
+                                            <li>2 saponcini</li>
+                                            <li>2 bustine di shampoo</li>
+                                            <li>1 saponetta (nel piattino)</li>
+                                            <li>kit orecchie</li>
+                                            <li>scendibagno</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>Spolvero completo</li>
+                            <li>
+                                Rifornire biscotti:
+                                <ul>
+                                    <li>1 salato</li>
+                                    <li>1 dolce</li>
+                                    <li>2 cialde caffè</li>
+                                </ul>
+                            </li>
+                            <li>
+                                Sul letto:
+                                <ul>
+                                    <li>Asciugamani chiusi con un fiocco (telo, viso, bidet)</li>
+                                    <li>Foglio</li>
+                                </ul>
+                            </li>
+                            <li>Rifornire frigo e cialde caffè</li>
+                            <li>Aspirazione</li>
+                            <li>Lavaggio</li>
+                        </ul>
+                        </li>
+                        <li>
+                            <div class="alarm-group mt-4">
+                                <h4 class="mb-3">Refresh:</h4>
+                                <ul>
+                                    <li>Ritirare su i letti</li>
+                                    <li>Pulire bagno senza doccia</li>
+                                    <li>Rifornire bagno come nel check-out</li>
+                                    <li>Cambio asciugamani se richiesto</li>
+                                    <li>Aspirazione</li>
+                                    <li>Lavaggio</li>
+                                </ul>
+                        </li>
+                        <li>
+                            <h4>Area comune</h4>
+                            <ul>
+                                <li>Pulizia superfici</li>
+                                <li>Pulizia macchina del caffè</li>
+                                <li>Rifornire</li>
+                                <li>Aspirazione</li>
+                                <li>Lavaggio</li>
+                            </ul>
+                        </li>
+                        </ul>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <!-- Pulizia Appartamenti -->
+            <div class="col-md-12">
+                <div class="alarm-container glass-effect p-4 rounded mb-4">
+                    <h3 class="text-center mb-4 neon-text">Pulizia Appartamenti</h3>
+                    <ul class="cleaning-list">
+                        <li>Far arieggiare</li>
+                        <li>Fare letti e controllo scorta armadi + kit</li>
+                        <li>Spolvero camere</li>
+                        <li>
+                            Fare bagni:
+                            <ul>
+                                <li>Lavaggio, disinfezione e asciugatura superfici</li>
+                                <li>Pulizia specchi</li>
+                                <li>Pulizia doccia approfondita</li>
+                                <li>Lucidatura superfici</li>
+                                <li>Pulizia mobili interno ed esterno</li>
+                                <li>
+                                    Vestire bagno:
+                                    <ul>
+                                        <li>Carta igienica</li>
+                                        <li>Tappetino</li>
+                                        <li>Kit</li>
+                                        <li>Striscia WC</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Pulizia cucina:
+                            <ul>
+                                <li>
+                                    Controllo stoviglie varie:
+                                    <ul>
+                                        <li>Togliere gocciolature</li>
+                                        <li>Controllo calcare</li>
+                                        <li>Lavaggio pentole se necessario</li>
+                                    </ul>
+                                </li>
+                                <li>Pulizia frigo e lasciare acceso</li>
+                                <li>Controllo forno e forno a microonde</li>
+                                <li>Pulizia mobili all'interno ed all'esterno</li>
+                                <li>Controllo spazzatura e lasciare 2 sacchetti di scorta</li>
+                                <li>Pulizia cappa</li>
+                                <li>Pulizia e lucidatura superfici</li>
+                            </ul>
+                        </li>
+                        <li>Spolvero completo stanze</li>
+                        <li>Lasciare kit + canovaccio e buttare via eventuali kit vecchi</li>
+                        <li>Controllo divani e divani letto</li>
+                        <li>Controllo parti esterne e lavatrice</li>
+                        <li>Controllo vetri</li>
+                        <li>Comunicare eventuali danni</li>
+                        <li>Conteggio biancheria e compilazione dei bigliettini</li>
+                    </ul>
+                    </section>
+                </div>
+            </div>
+    </div>
+    </div>
+    </div>
+    <!-- Back Button Bottom -->
+    <footer class="text-center mt-4">
+        <a href="/info.html" class="btn btn-custom-4 btn-lg text-white btn-custom ripple">
+            <span class="btn-content">Torna indietro</span>
+        </a>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#495057">
+    <meta name="description" content="Info">
+    <meta name="author" content="Fabio Malvaldi">
+
+    <!-- Cache Control -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        integrity="sha384-..." crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap">
+
+    <!-- Version Control -->
+    <script src="version.js"></script>
+    <script>
+        document.write(`
+            <link rel="stylesheet" href="/css/info.css?v=${APP_VERSION}">
+        `);
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="text-center mt-4 mb-4">
+            <h1 class="d-inline-block ms-3 align-middle">Appartamenti</h1>
+        </div>
+        <div class="text-center mt-4">
+            <a href="/info.html" class="btn btn-custom-4 btn-lg text-white btn-custom ripple">
+                <span class="btn-content">Torna indietro</span>
+            </a>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <iframe
+                    src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSJyzYwFX2PEgKD1LS9cKtgkL4qgnPRP0jCvJRJ3__Kc8BNZdUQ3a2tj8LMY2pmOZzvUV-SbKU8yXny/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false&amp;range=A1:F100&amp;animation:none;&amp;transition:none;"
+                    style="width: 100%; height: 600px; border: none;"></iframe>
+            </div>
+        </div>
+        <footer class="text-center mt-4">
+            <a href="/calendario.html" class="btn btn-custom-4 btn-lg text-white btn-custom ripple">
+                <span class="btn-content">Torna indietro</span>
+            </a>
+        </footer>
+    </div>
+</body>
+
+</html>
